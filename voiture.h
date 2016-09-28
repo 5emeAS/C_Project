@@ -1,5 +1,6 @@
 #ifndef AFFICHAGE_H
 #define AFFICHAGE_H
+
 typedef struct voiture VOITURE;
 struct voiture
 {

@@ -1,4 +1,18 @@
 #include "affichage.h"
+//#include "voiture.h"
+
+typedef struct voiture VOITURE;
+struct voiture
+{
+int posx; /* Position courante x de la voiture */
+int posy; /* Position courante y de la voiture */
+char alignement; /* ’g’=>gauche ou ’m’=>milieur ou ’d’=>droite */
+char type; /* ’v’=>voiture, ’c’=>camion, etc. */
+char couleur[10]; /* Couleur du véhicule */
+char custom[30]; /* Contient le véhicule customisé */
+char etat; /* État du véhicule => actif ou inactif */
+double speed; //in case of differents cars.
+};
 
 void ShowArray(int line,int column, int Array[line][column])
 {
@@ -60,14 +74,14 @@ void initPlayerPlace(int Array[3])
 	Array[1] = 1;
 }
 
-void newVehicule(/*voiture Array[line][column]*/) // need voiture.h
+void newVehicule(int column, int line, int Array[line][column]) // need voiture.h
 {
 	int choice = rand()%20;// % de chance qu'une voiture apparaisse
 	int choix = rand()%3; // le type de voiture qui apparait
 	int place = rand()%3;
 	if(choice > 15)
 	{
-		//Array[99][place]=/*voiture choix in the first line in the Array*/;
+		Array[99][place]=choix;/*voiture choix in the first line in the Array*/;
 	}
 }
 // fonction d'affichage de tableaux
@@ -76,9 +90,10 @@ void newVehicule(/*voiture Array[line][column]*/) // need voiture.h
 	2-> joueur
 
 */
-int verifAliveandScore(/*Array of cars and player*/)
+int verifAliveandScore(int line, int col, VOITURE Array1[line][col], int Array2[3])
 {
-	/*for(i=0;i<3:i++)
+	int i;
+	for(i=0;i<3;i++)
 	{
 		if(Array1[74][i] && Array2[i])
 			return -1;
@@ -87,7 +102,7 @@ int verifAliveandScore(/*Array of cars and player*/)
 				return 1;
 
 	}
-	return 0;*/
+	return 0;
 }
 
 void nextMoment(/*Array of Cars, player and trees*/)

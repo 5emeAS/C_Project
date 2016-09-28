@@ -4,6 +4,11 @@
 #include <stdlib.h>
 #include "ennemis.h"
 
+typedef struct voiture VOITURE;
+struct voiture;
+
 void ShowArray(int line, int column, int Array[line][column]);
+
+
 
 #endif
