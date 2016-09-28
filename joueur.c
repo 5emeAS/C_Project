@@ -1,5 +1,5 @@
-#include "voiture.h"
-char key_pressed()
+#include "joueur.h"
+/*char key_pressed()
 {
 struct termios oldterm, newterm;
 int oldfd;
@@ -18,4 +18,4 @@ ungetc(c, stdin);
 result = getchar();
 }
 return result;
-}
+}*/
