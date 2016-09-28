@@ -1,37 +1,37 @@
 CC=gcc
-CFLAGS=-Wall -lSDL2 `sdl-config --cflags --libs`
-EXEC=main
+CFLAGS=-Wall
+#-lSDL2 `sdl-config --cflags --libs`
 
-all: $(EXEC) clean
+all: exe clean
 
 
-main: game.o voiture.o joueur.o ennemis.o affichage.o
-	$(CC) -o main voiture.o joueur.o ennemis.o affichage.o  $(CFLAGS)
+exe: affichage.o game.o joueur.o voiture.o ennemis.o
+	$(CC) $(CFLAGS) affichage.o joueur.o ennemis.o voiture.o game.o  -o exe
 
 game.o: game.c game.h
-	$(CC) -o game.o -c game.c $(CFLAGS)
+	$(CC) -c game.c $(CFLAGS)
 
 voiture.o: voiture.c voiture.h
-	$(CC) -o voiture.o -c voiture.c $(CFLAGS)
+	$(CC) -c voiture.c $(CFLAGS)
 
 
 joueur.o: joueur.c joueur.h
-	$(CC) -o joueur.o -c joueur.c $(CFLAGS)
+	$(CC) -c joueur.c $(CFLAGS)
 
 
 ennemis.o: ennemis.c ennemis.h
-	$(CC) -o ennemis.o -c ennemis.c $(CFLAGS)
+	$(CC) -c ennemis.c $(CFLAGS)
 
 
 affichage.o: affichage.c affichage.h
-	$(CC) -o affichage.o -c affichage.c $(CFLAGS)
+	$(CC) -c affichage.c $(CFLAGS)
 
 
 clean:
 	rm -rf *.o core
 
 mrproper: clean
-	rm -f main
+	rm -f exe
 
 run:
-	@./$(EXEC)
+	@./exe
