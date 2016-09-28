@@ -32,3 +32,6 @@ clean:
 
 mrproper: clean
 	rm -f main
+
+run:
+	@./$(EXEC)
