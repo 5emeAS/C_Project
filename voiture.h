@@ -1,6 +1,7 @@
 #ifndef AFFICHAGE_H
 #define AFFICHAGE_H
-
+#include <unistd.h>
+#include <time.h>
 typedef struct voiture VOITURE;
 struct voiture
 {
