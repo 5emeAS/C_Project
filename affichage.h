@@ -11,12 +11,10 @@ void ShowArray(int line, int column, int Array[line][column]);
 void initArray(int line, int column, int Array[line][column]);
 void test();
 void initPlayerPlace(int line,int column, int Array[line][column]);
-void newVehicule(int column, int line, int Array[line][column]);
 //int verifAliveandScore(int line, int col, VOITURE Array1[line][col], int Array2[3]);
-void nextMoment(int line,int column, int Array[line][column]);
+void nextMoment(int choice,int choix, int place ,int line,int column, int Array[line][column]);
 void test(int line,int column, int iArray[line][column]);
-void createCarOnTop(int line, int column, int Array[line][column]);
-
+void newVehicule(int choice,int choix, int place ,int column, int line, int Array[line][column]);
 void initGame(int line,int column, int Array[line][column]);
 
 void clearScreen();

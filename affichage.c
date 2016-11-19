@@ -36,7 +36,7 @@ void ShowArray(int line,int column, int Array[line][column])
 				if(Array[i][j] == 2)
 					printf("  O	 ");
 				else
-				if(Array[i][j] == 0)
+				if(Array[i][j] == 3)
 					printf("  v	 ");
 				else
 					if(Array[i][j] == 10)
@@ -83,22 +83,14 @@ void initPlayerPlace(int line,int column, int Array[line][column])
 	Array[75][1] = 10;
 }
 
-void newVehicule(int column, int line, int Array[line][column]) // need voiture.h
+void newVehicule(int choice,int choix, int place ,int column, int line, int Array[line][column]) // need voiture.h
 {
-	int choice = rand()%20;// % de chance qu'une voiture apparaisse
-	int choix = rand()%3; // le type de voiture qui apparait
-	int place = rand()%3;
 	if(choice > 15)
 	{
-		Array[99][place]=choix;/*voiture choix in the first line in the Array*/;
+		Array[99][place]=choix;
 	}
 }
-// fonction d'affichage de tableaux
-/*  0-> rien
-	1-> voiture
-	2-> joueur
-
-*//*
+/*
 int verifAliveandScore(int line, int col, VOITURE Array1[line][col], int Array2[3])
 {
 	int i;
@@ -114,7 +106,7 @@ int verifAliveandScore(int line, int col, VOITURE Array1[line][col], int Array2[
 	return 0;
 }*/
 
-void nextMoment(int line,int column, int Array[line][column])
+void nextMoment(int choice,int choix, int place ,int line,int column, int Array[line][column])
 {
 	int i,j;
 	for(i = 99; i>1 ; i--)
@@ -125,7 +117,9 @@ void nextMoment(int line,int column, int Array[line][column])
 				Array[i][j] = Array[i-1][j];
 		}
 	}
-	createCarOnTop(100,3,Array);
+	printf("K\n");
+	newVehicule(choice,choix,place,100,3,Array);
+	printf("O");
 	for(i=0;i<3;i++)
 	{
 		Array[0][i] = 0;
@@ -141,21 +135,6 @@ void test(int line,int column, int iArray[line][column])
 	iArray[a.posy][a.posx] = 1;
 }
 
-void createCarOnTop(int line, int column, int Array[line][column])
-{
-	srand(time(NULL));
-	int choice,choix,place;
-	choice = rand()%20;
-	srand(time(NULL));
-	choix = (rand()%3)+1;
-	srand(time(NULL));
-	place = rand()%3;
-	if(choice > 15)
-	{
-		Array[0][place]=choix;/*voiture choix in the first line in the Array*/;
-	}
-}
-
 void initGame(int line,int column, int Array[line][column])
 {
 	srand(time(NULL));
@@ -169,7 +148,8 @@ void initGame(int line,int column, int Array[line][column])
 			choice = rand()%20;// % de chance qu'une voiture apparaisse
 			choix = (rand()%3)+1; // le type de voiture qui apparait
 			place = rand()%3;
-		if(choice > 5)
+		if(choice > 15)
+					printf("BOOM %d\n",i);
 
 			Array[i][place] = choix;
 	}
@@ -178,5 +158,6 @@ void initGame(int line,int column, int Array[line][column])
 void clearScreen()
 {
   const char* CLEAR_SCREE_ANSI = "\e[1;1H\e[2J";
-  write(STDOUT_FILENO,CLEAR_SCREE_ANSI,12);
+  write(STDOUT_FILENO,CLEAR_SCREE_ANSI,0);
+  printf("\n");
 }
