@@ -31,10 +31,9 @@ void ShowArray(int line, int column, int Array[line][column],int speed,int score
 					printf(BLUE"  🚘	 ");
 				else
 					printf("  	 ");
-				if(j!=column-1)
-				printf(WHITE"| ");
-			
 			}
+			if(j!=column-1)
+				printf(WHITE"| ");
 			
 		}
 		printf(WHITE"║");
